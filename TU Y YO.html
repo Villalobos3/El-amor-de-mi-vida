@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>EL AMOR DE MI VIDA</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffecf0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+      position: relative;
+    }
+    .envlope-wrapper, .white-box {
+      transition: opacity 0.5s;
+    }
+    .envlope-wrapper.hidden {
+      opacity: 0;
+    }
+    .envelope {
+      width: 300px;
+      height: 200px;
+      position: relative;
+      margin: 20px auto;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .front {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 5px;
+    }
+    .flap {
+      background: #e74c3c;
+      transform-origin: top;
+      transform: rotateX(0deg);
+      transition: transform 0.5s;
+      z-index: 2;
+      clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+    }
+    .envelope.open .flap {
+      transform: rotateX(-180deg);
+    }
+    .pocket {
+      background: #f06c6c;
+      z-index: 1;
+    }
+    .letter {
+      background: white;
+      width: 90%;
+      height: 60%;
+      margin: auto;
+      margin-top: 20%;
+      border-radius: 5px;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+      transition: transform 0.5s;
+      transform-origin: top;
+      transform: translateY(0);
+    }
+    .envelope.open .letter {
+      transform: translateY(-220px);
+    }
+    .heart {
+      width: 30px;
+      height: 30px;
+      background: red;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation: float 5s ease-in-out infinite;
+    }
+    .reset {
+      margin-top: 20px;
+    }
+    .reset button {
+      background-color: #e74c3c;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .reset button:hover {
+      background-color: white;
+      color: black;
+      border: 2px solid #e74c3c;
+    }
+    .white-box {
+      display: none;
+      width: 80%;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      margin: 20px auto;
+    }
+    .white-box.active {
+      display: block;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="envlope-wrapper" id="envelopeWrapper">
+      <div id="envelope" class="envelope close" onclick="toggleOpen()">
+        <div class="front flap"></div>
+        <div class="front pocket"></div>
+        <div class="letter">
+          <div class="content">
+            <div class="letter-content active" id="page1">
+              <h1>MI BONITA</h1>
+              <p>FELICES 6 MESES AMOR</p>
+              <div class="navigation">
+                <button onclick="showWhiteBox()">Siguiente</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="heart a1"></div>
+      </div>
+    </div>
+    <div class="white-box" id="whiteBox">
+      <h1>EL PRIMERO DE SEIS</h1>
+      <p>
+        Novia mia, ¿puedes creer que seis meses ya han pasado? Sin duda este tiempo a tu lado ha sido mi mejor decisión. Cada llamada, cada salida, cada sonrisa, cada beso, cada abrazo, es hermoso, porque es contigo.
+      </p>
+      <p>
+        <img src="descarga.png" >
+      </p>
+      <p>
+        Solo quería agradecerte por ser mi novia. Eres increíble, mi amor. Eres mi pararrayos, eres mi persona, mi lugar feliz, mi familia, eres mi todo y me gusta que sea así.
+      </p> 
+      <p>
+        Te amo, amor. Eres mi primera vez en muchas cosas y creo que una de las más importantes ha sido que eres mi "te amo", aquel que inunda mi corazón de amor, el que deseo y anhelo seguir diciendo todos los días. Porque has sido tú desde el día uno, porque lo eres hoy y estoy segura que lo serás mañana.
+      </p>
+      <p>
+        Gracias por mejorar conmigo, por estar y por agarrar mi manita cuando ya no puedo más. Gracias por sacar mi lado más cursi, que te ama, que te extraña todos los días y que es muy feliz contigo. Sé que estos seis meses solo son el comienzo de una vida a tu lado, y aprovecharé cada minuto en el que permitas ser tu novia. Te amo con todo mi corazón, amor.
+      </p>
+      <p>
+        Y oficialmente hace 183 días, 4,392 horas y 263,520 minutos que me convertí en tu novia, uno de los días más felices a tu lado. ¿Y sabes por qué, amor? Porque tuve la oportunidad de decirle “novia” a mi persona, al amor de mi vida, mi bonita. Quiero que siempre recuerdes, amor, que TE AMO CON TODO MI CORAZÓN y siempre estoy. Porque en mí encontraste una familia, que espero un día, construyamos un hogar, juntas.
+      </p>
+      <div class="navigation">
+        <button onclick="prevPage()">Anterior</button>
+      </div>
+    </div>
+    <div class="reset">
+      <button id="open" onclick="toggleOpen()">Open</button>
+      <button id="reset" onclick="resetEnvelope()">Reset</button>
+    </div>
+  </div>
+
+  <audio controls>
+    <source src="CURSI.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
+  <script>
+    function toggleOpen() {
+      document.getElementById('envelope').classList.toggle('open');
+    }
+
+    function showWhiteBox() {
+      document.getElementById('envelopeWrapper').style.opacity = 0;
+      setTimeout(() => {
+        document.getElementById('envelopeWrapper').classList.add('hidden');
+        document.getElementById('whiteBox').classList.add('active');
+      }, 500);
+    }
+
+    function prevPage() {
+      document.getElementById('whiteBox').classList.remove('active');
+      document.getElementById('envelopeWrapper').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('envelopeWrapper').style.opacity = 1;
+      }, 500);
+    }
+
+    function resetEnvelope() {
+      document.getElementById('envelope').classList.remove('open');
+      document.getElementById('whiteBox').classList.remove('active');
+      document.getElementById('envelopeWrapper').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('envelopeWrapper').style.opacity = 1;
+      }, 500);
+    }
+  </script>
+</body>
+</html>
